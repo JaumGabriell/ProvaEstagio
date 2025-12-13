@@ -199,7 +199,9 @@ function App() {
           </form>
 
           <div className="list">
-            {categories.length === 0 && <p>No genres yet</p>}
+            {categories.length === 0 && (
+              <p className="empty-state">No genres yet</p>
+            )}
             {categories.map((cat) => (
               <div key={cat.id} className="list-item">
                 <span>
@@ -233,7 +235,7 @@ function App() {
           <h2>Bands</h2>
           <form onSubmit={handleNoteSubmit}>
             <div className="form-group">
-              <label>Title</label>
+              <label>Name</label>
               <input
                 type="text"
                 value={noteForm.title}
@@ -244,7 +246,7 @@ function App() {
               />
             </div>
             <div className="form-group">
-              <label>Content</label>
+              <label>Description</label>
               <textarea
                 value={noteForm.content}
                 onChange={(e) =>
@@ -284,7 +286,7 @@ function App() {
           </form>
 
           <div className="list">
-            {notes.length === 0 && <p>No bands yet</p>}
+            {notes.length === 0 && <p className="empty-state">No bands yet</p>}
             {notes.map((note) => (
               <div
                 key={note.id}
