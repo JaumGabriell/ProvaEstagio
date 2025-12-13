@@ -4,3 +4,17 @@ __pycache__/
 *.db
 venv/
 .env
+
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+#jenkins
+jenkins_compose
