@@ -90,3 +90,51 @@ Frontend disponível em: http://localhost:3000
 **Backend:** Python, FastAPI, SQLAlchemy, SQLite
 
 **Frontend:** React, Vite
+
+
+## Docker com Jenkins
+
+A imagem Docker com Jenkins e todas as dependências necessárias (Python, Node.js, etc.) está disponível no Docker Hub:
+
+**Imagem:** [jaummn/jenkins-python-crocodile](https://hub.docker.com/r/jaummn/jenkins-python-crocodile)
+
+### Como baixar e rodar
+
+```bash
+# Baixar a imagem
+docker pull jaummn/jenkins-python-crocodile
+
+# Rodar o container
+docker run -d -p 8080:8080 -p 50000:50000 --name jenkins jaummn/jenkins-python-crocodile
+```
+
+### Acessar o Jenkins
+
+1. Acesse http://localhost:8080
+2. Para obter a senha inicial:
+   ```bash
+   docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+   ```
+3. Cole a senha no navegador e siga o wizard de configuração
+
+### Ou use o Docker Compose
+
+Para rodar toda a aplicação (Backend + Frontend + Jenkins):
+
+```bash
+docker compose up
+```
+
+Isso irá subir:
+- **Backend:** http://localhost:8000
+- **Frontend:** http://localhost:3000
+- **Jenkins:** http://localhost:8080
+
+
+## Pipeline
+
+![Tela principal](screenshots/pipeline.png)
+
+## Email
+
+![Tela principal](screenshots/email.png)
