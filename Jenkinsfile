@@ -66,8 +66,8 @@ pipeline {
                 echo 'Sending notification email...'
                 sh '''
                     cd scripts
-                    chmod +x send_email.sh
-                    ./send_email.sh
+                    
+                    python3 send_email.py
                 '''
             }
         }
