@@ -7,6 +7,10 @@ services:
       dockerfile: dockerfile
     container_name: jenkins_bands
     privileged: true
+    environment:
+          EMAIL_TO: ${EMAIL_TO}
+          SMTP_USER: ${SMTP_USER}
+          SMTP_PASSWORD: ${SMTP_PASSWORD}
     user: root
     ports:
       - 8080:8080
