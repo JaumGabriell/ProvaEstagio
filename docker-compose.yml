@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  jenkins_python:
+    build:
+      context: ./docker
+      dockerfile: dockerfile
+    container_name: jenkins_bands
+    privileged: true
+    user: root
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - ./jenkins_compose/jenkins_configuration:/var/jenkins_home
+      - ./:/workspace
+    restart: always
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: bands_api
+    ports:
+      - 8000:8000
+    volumes:
+      - ./backend:/app
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: bands_frontend
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+    restart: always
